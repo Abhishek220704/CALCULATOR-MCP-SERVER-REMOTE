@@ -1,0 +1,41 @@
+node src/server.js
+
+ngrok http 3000
+
+STATUS :- https://exit-aged-accustom.ngrok-free.dev/
+
+INFO :- https://exit-aged-accustom.ngrok-free.dev/info
+
+INSPECT :- http://127.0.0.1:4040/inspect/http
+
+DB :- node view-db.js
+
+// src/server.js
+// ─────────────────────────────────────────────────────────────
+//  MCP Calculator Server — Streamable HTTP Transport
+//
+//  Architecture
+//  ┌─────────────────────────────────────────────────────────┐
+//  │  Express App                                            │
+//  │                                                         │
+//  │  Public (no auth):                                      │
+//  │   GET  /                               → health check   │
+//  │   GET  /info                           → capabilities   │
+//  │   GET  /.well-known/oauth-protected-resource            │
+//  │   GET  /.well-known/oauth-authorization-server          │
+//  │   POST /register                       → DCR            │
+//  │   GET  /oauth/authorize                → consent page   │
+//  │   POST /oauth/authorize                → issue code     │
+//  │   POST /oauth/token                    → issue token    │
+//  │                                                         │
+//  │  Protected (API key or OAuth Bearer token):             │
+//  │   POST /mcp       → MCP JSON-RPC messages               │
+//  │   GET  /mcp       → SSE stream                          │
+//  │   DELETE /mcp     → session teardown                    │
+//  └─────────────────────────────────────────────────────────┘
+//
+//  Transport  : Streamable HTTP (MCP spec 2025-03-26)
+//  Auth       : API key (X-API-Key / Bearer / ?apiKey=)
+//               OR full OAuth 2.0 + PKCE flow
+//  SDK        : @modelcontextprotocol/sdk ≥ 1.10
+// ─────────────────────────────────────────────────────────────
