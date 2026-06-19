@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/abhishek220704-calculator-mcp-server-remote-badge.png)](https://mseep.ai/app/abhishek220704-calculator-mcp-server-remote)
+
 # MCP Calculator Server
 
 A **remote MCP server** built with Node.js that exposes arithmetic tools and prompts over **Streamable HTTP transport** (MCP spec 2025-03-26) with **API key authorization**.
